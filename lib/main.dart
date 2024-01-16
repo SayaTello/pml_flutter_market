@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_seller/bloc/add_image/add_image_bloc.dart';
 import 'package:flutter_seller/bloc/bloc/add_product_bloc.dart';
 import 'package:flutter_seller/bloc/categories/categories_bloc.dart';
 import 'package:flutter_seller/bloc/products/products_bloc.dart';
+import 'package:flutter_seller/data/datasources/firebase_messaging_remote_datasource.dart';
+import 'package:flutter_seller/firebase_options.dart';
 import 'package:flutter_seller/pages/dashboard/seller_dashboard_page.dart';
 
 import 'bloc/login/login_bloc.dart';
@@ -13,7 +16,12 @@ import 'data/datasources/auth_local_datasource.dart';
 import 'pages/auth/auth_page.dart';
 import 'utils/light_themes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseMessagingRemoteDatasource().initNotification();
   runApp(const MyApp());
 }
 
