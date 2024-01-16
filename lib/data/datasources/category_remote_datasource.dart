@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_seller/data/models/categories_response_model.dart';
-import 'package:flutter_seller/data/models/products_response_model.dart';
 
 import 'package:http/http.dart' as http;
 
